@@ -63,14 +63,15 @@ class GalaxyIntegration extends Integration {
             // Required params
             self.vcf = self.config.params.vcfs[0];
             self.tbi = self.config.params.tbis[0];
-            self.normal = self.config.params["0"];
-            self.t1 = self.config.params["1"];
-            if (self.vcf == null || self.tbi == null
-                || self.normal == null || self.t1 == null) {
+
+            // Minimum requirement is just vcf+tbi
+            if (self.vcf == null || self.tbi == null) {
                 console.log('ERROR: did not obtain required parameters from Galaxy configuration');
             }
 
-            // Optional timepoints
+            // Optional data and time points
+            self.normal = self.config.params["0"];
+            self.t1 = self.config.params["1"];
             self.t2 = self.config.params["2"];
             self.t3 = self.config.params["3"];
             self.t4 = self.config.params["4"];
