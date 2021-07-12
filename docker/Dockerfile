@@ -1,12 +1,13 @@
 FROM quay.io/iobio/iobio-gru-backend:latest
 
-ARG oncogene_branch=master
-RUN git clone --depth 1 --branch ${oncogene_branch} https://github.com/iobio/oncogene /oncogene
-#RUN git clone --depth 1 --branch ${oncogene_branch} https://github.com/anderspitman/oncogene /oncogene
+ARG oncogene_branch=galaxy-docker
+#RUN git clone --depth 1 --branch ${bam_version} https://github.com/iobio/bam.iobio.io
+#RUN git clone --depth 1 --branch ${oncogene_branch} https://github.com/iobio/oncogene /oncogene
+RUN git clone --depth 1 --branch ${oncogene_branch} https://github.com/anderspitman/oncogene /oncogene
 
 WORKDIR /oncogene
 
-COPY galaxy_config.json ./public
+#COPY galaxy_config.json ./public
 
 RUN ["npm", "install"]
 
